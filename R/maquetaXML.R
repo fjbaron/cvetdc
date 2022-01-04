@@ -18,6 +18,8 @@ maquetaXML <- function(numero,name,iniciosVacios,enunciadosEquivalentes, finales
 
   opcionesXML=maquetaOpcionXML(validas,invalidas,OK,KO)
 
+  isSingle=as.character(ifelse(length(validas)>1,"false","true"))
+
   sprintf("
 <!-- question: %s  -->
 <question type=\"multichoice\">
@@ -33,7 +35,7 @@ maquetaXML <- function(numero,name,iniciosVacios,enunciadosEquivalentes, finales
     <defaultgrade>1.0000000</defaultgrade>
     <penalty>0.3333333</penalty>
     <hidden>0</hidden>
-    <single>false</single>
+    <single>%s</single>
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>abc</answernumbering>
     <correctfeedback format=\"html\">
@@ -48,5 +50,5 @@ maquetaXML <- function(numero,name,iniciosVacios,enunciadosEquivalentes, finales
     <shownumcorrect/>
     %s
   </question>
-",  name,name,iniciosVacios,enunciadosEquivalentes,finalesVacios,opcionesXML)
+",  name,name,iniciosVacios,enunciadosEquivalentes,finalesVacios,isSingle,opcionesXML)
 }
